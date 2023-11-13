@@ -9,6 +9,7 @@ services:
       - 1880:1880
     volumes:
       - node-red:/data:rw
+    restart: always
 
   influxdb:
     image: influxdb:latest
@@ -18,7 +19,7 @@ services:
     env_file:
       - .env
     entrypoint: ["./entrypoint.sh"]
-    restart: on-failure:10
+    restart: always
     ports:
       - 8086:8086
 
@@ -30,6 +31,7 @@ services:
       - grafana:/var/lib/grafana:rw
     depends_on:
       - influxdb
+    restart: always
     ports:
       - 3000:3000
 
