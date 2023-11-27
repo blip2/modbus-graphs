@@ -9,6 +9,8 @@ services:
       - 1880:1880
     volumes:
       - node-red:/data:rw
+    depends_on:
+      - influxdb
     restart: always
 
   influxdb:
